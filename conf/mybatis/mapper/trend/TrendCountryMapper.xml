@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【国家表】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2016-08-24 14:50:30
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.trend.TrendCountryDao">
+
+	<resultMap id="trendCountryResultMap" type="com.bluemobi.po.trend.TrendCountry">
+		<id property="countryId" column="country_id" />
+       <result property="countryName" column="country_name" />
+       <result property="countrySort" column="country_sort" />
+       <result property="filepath" column="filepath" />
+       <result property="type" column="type" />
+       <result property="isDelete" column="is_delete" />
+       <result property="ctime" column="ctime" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="trendCountryResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="trendCountryResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.trend.TrendCountry" useGeneratedKeys="true" keyProperty="countryId" >
+	   insert into trend_country (
+	     country_id,
+	     country_name,
+	     country_sort,
+	     filepath,
+	     type,
+	     is_delete,
+	     ctime
+	   )values (
+	     #{countryId},
+	     #{countryName},
+	     #{countrySort},
+	     #{filepath},
+	     #{type},
+	     #{isDelete},
+	     #{ctime}
+	   )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.trend.TrendCountry">
+		update trend_country
+		<set>
+			<if test="countryId != null">
+				country_id=#{countryId},
+			</if>
+			<if test="countryName != null">
+				country_name=#{countryName},
+			</if>
+			<if test="countrySort != null">
+				country_sort=#{countrySort},
+			</if>
+			<if test="filepath != null">
+				filepath=#{filepath},
+			</if>
+			<if test="type != null">
+				type=#{type},
+			</if>
+			<if test="isDelete != null">
+				is_delete=#{isDelete},
+			</if>
+			<if test="ctime != null">
+				ctime=#{ctime},
+			</if>
+		</set>
+		<where>
+			country_id=#{countryId} 
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+	     trend_country 
+	   where 
+	    country_id=#{countryId} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="trendCountryResultMap">
+	   select 
+	    country_id,
+	    country_name,
+	    country_sort,
+	    filepath,
+	    type,
+	    is_delete,
+	    ctime
+	   from trend_country
+	   where 
+	    country_id=#{countryId} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="trendCountryResultMap">
+	   select 
+	     country_id,
+	     country_name,
+	     country_sort,
+	     filepath,
+	     type,
+	     is_delete,
+	     ctime
+	   from trend_country
+	   <where>
+	     <if test="countryId != null">
+	        country_id=#{countryId}
+	     </if>
+	     <if test="countryName != null">
+	        and country_name=#{countryName}
+	     </if>
+	     <if test="countrySort != null">
+	        and country_sort=#{countrySort}
+	     </if>
+	     <if test="filepath != null">
+	        and filepath=#{filepath}
+	     </if>
+	     <if test="type != null">
+	        and type=#{type}
+	     </if>
+	     <if test="isDelete != null">
+	        and is_delete=#{isDelete}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	   </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+	    country_id,
+	    country_name,
+	    country_sort,
+	    filepath,
+	    type,
+	    is_delete,
+	    ctime
+	   from trend_country
+	   where 
+	    country_id=#{countryId} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+	     country_id,
+	     country_name,
+	     country_sort,
+	     filepath,
+	     type,
+	     is_delete,
+	     ctime
+	   from trend_country
+	   <where>
+	     <if test="countryId != null">
+	        country_id=#{countryId}
+	     </if>
+	     <if test="countryName != null">
+	        and country_name=#{countryName}
+	     </if>
+	     <if test="countrySort != null">
+	        and country_sort=#{countrySort}
+	     </if>
+	     <if test="filepath != null">
+	        and filepath=#{filepath}
+	     </if>
+	     <if test="type != null">
+	        and type=#{type}
+	     </if>
+	     <if test="isDelete != null">
+	        and is_delete=#{isDelete}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	   </where>
+	</select>
+	
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+	     country_id,
+	     country_name,
+	     country_sort,
+	     filepath,
+	     type,
+	     is_delete,
+	     ctime
+	<include refid="pageCondition" />
+	limit #{offset},#{rows}
+	</select>
+
+	<select id="pageCount" parameterType="map" resultType="int">
+	   select count(1)
+	   <include refid="pageCondition" />
+	</select>
+
+	<sql id="pageCondition">
+	   from trend_country
+	   <where>
+	     <if test="countryId != null">
+	        country_id=#{countryId}
+	     </if>
+	     <if test="countryName != null">
+	        and country_name=#{countryName}
+	     </if>
+	     <if test="countrySort != null">
+	        and country_sort=#{countrySort}
+	     </if>
+	     <if test="filepath != null">
+	        and filepath=#{filepath}
+	     </if>
+	     <if test="type != null">
+	        and type=#{type}
+	     </if>
+	     <if test="isDelete != null">
+	        and is_delete=#{isDelete}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	   </where>
+	</sql>
+
+	<!-- 获取所有国家分类 -->
+	<select id="getTrendCountrys" parameterType="com.bluemobi.po.trend.TrendCountry" resultMap="trendCountryResultMap">
+		SELECT 
+	     country_id,
+	     country_name,
+	     country_sort,
+	     filepath,
+	     type,
+	     is_delete,
+	     ctime
+		<include refid="pageCondition" />
+	</select>
+	
+</mapper> 

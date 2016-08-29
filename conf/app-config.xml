@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<server>
+    <description>应用服1</description>
+	<server-name>AppServer1</server-name>
+	<server-id>10001</server-id>  <!-- 应用服务器唯一id -->
+	<shutdown-port>5001</shutdown-port>  <!-- 服务器关闭端口  -->
+	<secret-key>hd#ncmdj!keiuspbm</secret-key>  <!-- 秘钥,暂时不用 -->
+	<token_expire>3600</token_expire>  <!-- token过期时间  单位：秒 -->
+</server>
+

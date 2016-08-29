@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【推荐表】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2016-08-23 15:02:41
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.goods.GoodsRecommendDao">
+
+	<resultMap id="goodsRecommendResultMap" type="com.bluemobi.po.goods.GoodsRecommend">
+		<id property="recommendId" column="recommend_id" />
+       <result property="goodsSku" column="goods_sku" />
+       <result property="goodsName" column="goods_name" />
+       <result property="goodsPrice" column="goods_price" />
+       <result property="goodsMemo" column="goods_memo" />
+       <result property="urlLink" column="url_link" />
+       <result property="salesVolume" column="sales_volume" />
+       <result property="filepath" column="filepath" />
+       <result property="recommendType" column="recommend_type" />
+       <result property="createBy" column="create_by" />
+       <result property="ctime" column="ctime" />
+       <result property="beginTime" column="begin_time" />
+       <result property="endTime" column="end_time" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="goodsRecommendResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="goodsRecommendResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.goods.GoodsRecommend" useGeneratedKeys="true" keyProperty="recommendId" >
+	   insert into goods_recommend (
+	     recommend_id,
+	     goods_sku,
+	     goods_name,
+	     goods_price,
+	     goods_memo,
+	     url_link,
+	     sales_volume,
+	     filepath,
+	     recommend_type,
+	     create_by,
+	     ctime,
+	     begin_time,
+	     end_time
+	   )values (
+	     #{recommendId},
+	     #{goodsSku},
+	     #{goodsName},
+	     #{goodsPrice},
+	     #{goodsMemo},
+	     #{urlLink},
+	     #{salesVolume},
+	     #{filepath},
+	     #{recommendType},
+	     #{createBy},
+	     #{ctime},
+	     #{beginTime},
+	     #{endTime}
+	   )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.goods.GoodsRecommend">
+		update goods_recommend
+		<set>
+			<if test="recommendId != null">
+				recommend_id=#{recommendId},
+			</if>
+			<if test="goodsSku != null">
+				goods_sku=#{goodsSku},
+			</if>
+			<if test="goodsName != null">
+				goods_name=#{goodsName},
+			</if>
+			<if test="goodsPrice != null">
+				goods_price=#{goodsPrice},
+			</if>
+			<if test="goodsMemo != null">
+				goods_memo=#{goodsMemo},
+			</if>
+			<if test="urlLink != null">
+				url_link=#{urlLink},
+			</if>
+			<if test="salesVolume != null">
+				sales_volume=#{salesVolume},
+			</if>
+			<if test="filepath != null">
+				filepath=#{filepath},
+			</if>
+			<if test="recommendType != null">
+				recommend_type=#{recommendType},
+			</if>
+			<if test="createBy != null">
+				create_by=#{createBy},
+			</if>
+			<if test="ctime != null">
+				ctime=#{ctime},
+			</if>
+			<if test="beginTime != null">
+				begin_time=#{beginTime},
+			</if>
+			<if test="endTime != null">
+				end_time=#{endTime},
+			</if>
+		</set>
+		<where>
+			recommend_id=#{recommendId} 
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+	     goods_recommend 
+	   where 
+	    recommend_id=#{recommendId} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="goodsRecommendResultMap">
+	   select 
+	    recommend_id,
+	    goods_sku,
+	    goods_name,
+	    goods_price,
+	    goods_memo,
+	    url_link,
+	    sales_volume,
+	    filepath,
+	    recommend_type,
+	    create_by,
+	    ctime,
+	    begin_time,
+	    end_time
+	   from goods_recommend
+	   where 
+	    recommend_id=#{recommendId} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="goodsRecommendResultMap">
+	   select 
+	     recommend_id,
+	     goods_sku,
+	     goods_name,
+	     goods_price,
+	     goods_memo,
+	     url_link,
+	     sales_volume,
+	     filepath,
+	     recommend_type,
+	     create_by,
+	     ctime,
+	     begin_time,
+	     end_time
+	   from goods_recommend
+	   <where>
+	     <if test="recommendId != null">
+	        recommend_id=#{recommendId}
+	     </if>
+	     <if test="goodsSku != null">
+	        and goods_sku=#{goodsSku}
+	     </if>
+	     <if test="goodsName != null">
+	        and goods_name=#{goodsName}
+	     </if>
+	     <if test="goodsPrice != null">
+	        and goods_price=#{goodsPrice}
+	     </if>
+	     <if test="goodsMemo != null">
+	        and goods_memo=#{goodsMemo}
+	     </if>
+	     <if test="urlLink != null">
+	        and url_link=#{urlLink}
+	     </if>
+	     <if test="salesVolume != null">
+	        and sales_volume=#{salesVolume}
+	     </if>
+	     <if test="filepath != null">
+	        and filepath=#{filepath}
+	     </if>
+	     <if test="recommendType != null">
+	        and recommend_type=#{recommendType}
+	     </if>
+	     <if test="createBy != null">
+	        and create_by=#{createBy}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="beginTime != null">
+	        and begin_time=#{beginTime}
+	     </if>
+	     <if test="endTime != null">
+	        and end_time=#{endTime}
+	     </if>
+	   </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+	    recommend_id,
+	    goods_sku,
+	    goods_name,
+	    goods_price,
+	    goods_memo,
+	    url_link,
+	    sales_volume,
+	    filepath,
+	    recommend_type,
+	    create_by,
+	    ctime,
+	    begin_time,
+	    end_time
+	   from goods_recommend
+	   where 
+	    recommend_id=#{recommendId} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+	     recommend_id,
+	     goods_sku,
+	     goods_name,
+	     goods_price,
+	     goods_memo,
+	     url_link,
+	     sales_volume,
+	     filepath,
+	     recommend_type,
+	     create_by,
+	     ctime,
+	     begin_time,
+	     end_time
+	   from goods_recommend
+	   <where>
+	     <if test="recommendId != null">
+	        recommend_id=#{recommendId}
+	     </if>
+	     <if test="goodsSku != null">
+	        and goods_sku=#{goodsSku}
+	     </if>
+	     <if test="goodsName != null">
+	        and goods_name=#{goodsName}
+	     </if>
+	     <if test="goodsPrice != null">
+	        and goods_price=#{goodsPrice}
+	     </if>
+	     <if test="goodsMemo != null">
+	        and goods_memo=#{goodsMemo}
+	     </if>
+	     <if test="urlLink != null">
+	        and url_link=#{urlLink}
+	     </if>
+	     <if test="salesVolume != null">
+	        and sales_volume=#{salesVolume}
+	     </if>
+	     <if test="filepath != null">
+	        and filepath=#{filepath}
+	     </if>
+	     <if test="recommendType != null">
+	        and recommend_type=#{recommendType}
+	     </if>
+	     <if test="createBy != null">
+	        and create_by=#{createBy}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="beginTime != null">
+	        and begin_time=#{beginTime}
+	     </if>
+	     <if test="endTime != null">
+	        and end_time=#{endTime}
+	     </if>
+	   </where>
+	</select>
+	
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+	     recommend_id,
+	     goods_sku,
+	     goods_name,
+	     goods_price,
+	     goods_memo,
+	     url_link,
+	     sales_volume,
+	     filepath,
+	     recommend_type,
+	     create_by,
+	     ctime,
+	     begin_time,
+	     end_time
+	<include refid="pageCondition" />
+	limit #{offset},#{rows}
+	</select>
+
+	<select id="pageCount" parameterType="map" resultType="int">
+	   select count(1)
+	   <include refid="pageCondition" />
+	</select>
+
+	<sql id="pageCondition">
+	   from goods_recommend
+	   <where>
+	     <if test="recommendId != null">
+	        recommend_id=#{recommendId}
+	     </if>
+	     <if test="goodsSku != null">
+	        and goods_sku=#{goodsSku}
+	     </if>
+	     <if test="goodsName != null">
+	        and goods_name=#{goodsName}
+	     </if>
+	     <if test="goodsPrice != null">
+	        and goods_price=#{goodsPrice}
+	     </if>
+	     <if test="goodsMemo != null">
+	        and goods_memo=#{goodsMemo}
+	     </if>
+	     <if test="urlLink != null">
+	        and url_link=#{urlLink}
+	     </if>
+	     <if test="salesVolume != null">
+	        and sales_volume=#{salesVolume}
+	     </if>
+	     <if test="filepath != null">
+	        and filepath=#{filepath}
+	     </if>
+	     <if test="recommendType != null">
+	        and recommend_type=#{recommendType}
+	     </if>
+	     <if test="createBy != null">
+	        and create_by=#{createBy}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="beginTime != null">
+	        and begin_time=#{beginTime}
+	     </if>
+	     <if test="endTime != null">
+	        and end_time=#{endTime}
+	     </if>
+	   </where>
+	</sql>
+	
+	<select id="getHomeGoodsRecommend" parameterType="list" resultMap="mapResultMap">
+		select 
+		 recommend_id,
+	     goods_sku,
+	     goods_name,
+	     goods_price,
+	     goods_memo,
+	     url_link,
+	     sales_volume,
+	     filepath,
+	     recommend_type,
+	     create_by,
+	     ctime,
+	     begin_time,
+	     end_time
+		from goods_recommend
+		<where>
+			recommend_type in
+			<foreach collection="types" item="item" index="index" open="(" separator="," close=")" >
+			#{item}
+			</foreach>
+		</where>
+	</select>
+
+	
+</mapper> 

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【首页banner表】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2016-08-08 17:19:10
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.cms.CmsBannerDao">
+
+	<resultMap id="cmsBannerResultMap" type="com.bluemobi.po.cms.CmsBanner">
+		<id property="bannerId" column="banner_id" />
+       <result property="bannerName" column="banner_name" />
+       <result property="forwardUrl" column="forward_url" />
+       <result property="attachmentid" column="attachmentid" />
+       <result property="status" column="status" />
+       <result property="terminalType" column="terminal_type" />
+       <result property="bannerSort" column="banner_sort" />
+       <result property="startTime" column="start_time" />
+       <result property="endTime" column="end_time" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="cmsBannerResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="cmsBannerResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.cms.CmsBanner" useGeneratedKeys="true" keyProperty="bannerId" >
+	   insert into cms_banner (
+	     banner_id,
+	     banner_name,
+	     forward_url,
+	     attachmentid,
+	     status,
+	     terminal_type,
+	     banner_sort,
+	     start_time,
+	     end_time
+	   )values (
+	     #{bannerId},
+	     #{bannerName},
+	     #{forwardUrl},
+	     #{attachmentid},
+	     #{status},
+	     #{terminalType},
+	     #{bannerSort},
+	     #{startTime},
+	     #{endTime}
+	   )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.cms.CmsBanner">
+		update cms_banner
+		<set>
+			<if test="bannerId != null">
+				banner_id=#{bannerId},
+			</if>
+			<if test="bannerName != null">
+				banner_name=#{bannerName},
+			</if>
+			<if test="forwardUrl != null">
+				forward_url=#{forwardUrl},
+			</if>
+			<if test="attachmentid != null">
+				attachmentid=#{attachmentid},
+			</if>
+			<if test="status != null">
+				status=#{status},
+			</if>
+			<if test="terminalType != null">
+				terminal_type=#{terminalType},
+			</if>
+			<if test="bannerSort != null">
+				banner_sort=#{bannerSort},
+			</if>
+			<if test="startTime != null">
+				start_time=#{startTime},
+			</if>
+			<if test="endTime != null">
+				end_time=#{endTime},
+			</if>
+		</set>
+		<where>
+			banner_id=#{bannerId} 
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+	     cms_banner 
+	   where 
+	    banner_id=#{bannerId} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="cmsBannerResultMap">
+	   select 
+	    banner_id,
+	    banner_name,
+	    forward_url,
+	    attachmentid,
+	    status,
+	    terminal_type,
+	    banner_sort,
+	    start_time,
+	    end_time
+	   from cms_banner
+	   where 
+	    banner_id=#{bannerId} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="cmsBannerResultMap">
+	   select 
+	     banner_id,
+	     banner_name,
+	     forward_url,
+	     attachmentid,
+	     status,
+	     terminal_type,
+	     banner_sort,
+	     start_time,
+	     end_time
+	   from cms_banner
+	   <where>
+	     <if test="bannerId != null">
+	        banner_id=#{bannerId}
+	     </if>
+	     <if test="bannerName != null">
+	        and banner_name=#{bannerName}
+	     </if>
+	     <if test="forwardUrl != null">
+	        and forward_url=#{forwardUrl}
+	     </if>
+	     <if test="attachmentid != null">
+	        and attachmentid=#{attachmentid}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="terminalType != null">
+	        and terminal_type=#{terminalType}
+	     </if>
+	     <if test="bannerSort != null">
+	        and banner_sort=#{bannerSort}
+	     </if>
+	     <if test="startTime != null">
+	        and start_time=#{startTime}
+	     </if>
+	     <if test="endTime != null">
+	        and end_time=#{endTime}
+	     </if>
+	   </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+	    banner_id,
+	    banner_name,
+	    forward_url,
+	    attachmentid,
+	    status,
+	    terminal_type,
+	    banner_sort,
+	    start_time,
+	    end_time
+	   from cms_banner
+	   where 
+	    banner_id=#{bannerId} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+	     banner_id,
+	     banner_name,
+	     forward_url,
+	     attachmentid,
+	     status,
+	     terminal_type,
+	     banner_sort,
+	     start_time,
+	     end_time
+	   from cms_banner
+	   <where>
+	     <if test="bannerId != null">
+	        banner_id=#{bannerId}
+	     </if>
+	     <if test="bannerName != null">
+	        and banner_name=#{bannerName}
+	     </if>
+	     <if test="forwardUrl != null">
+	        and forward_url=#{forwardUrl}
+	     </if>
+	     <if test="attachmentid != null">
+	        and attachmentid=#{attachmentid}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="terminalType != null">
+	        and terminal_type=#{terminalType}
+	     </if>
+	     <if test="bannerSort != null">
+	        and banner_sort=#{bannerSort}
+	     </if>
+	     <if test="startTime != null">
+	        and start_time=#{startTime}
+	     </if>
+	     <if test="endTime != null">
+	        and end_time=#{endTime}
+	     </if>
+	   </where>
+	</select>
+	
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+	     banner_id,
+	     banner_name,
+	     forward_url,
+	     attachmentid,
+	     status,
+	     terminal_type,
+	     banner_sort,
+	     start_time,
+	     end_time
+	<include refid="pageCondition" />
+	limit #{offset},#{rows}
+	</select>
+
+	<select id="pageCount" parameterType="map" resultType="int">
+	   select count(1)
+	   <include refid="pageCondition" />
+	</select>
+
+	<sql id="pageCondition">
+	   from cms_banner
+	   <where>
+	     <if test="bannerId != null">
+	        banner_id=#{bannerId}
+	     </if>
+	     <if test="bannerName != null">
+	        and banner_name=#{bannerName}
+	     </if>
+	     <if test="forwardUrl != null">
+	        and forward_url=#{forwardUrl}
+	     </if>
+	     <if test="attachmentid != null">
+	        and attachmentid=#{attachmentid}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="terminalType != null">
+	        and terminal_type=#{terminalType}
+	     </if>
+	     <if test="bannerSort != null">
+	        and banner_sort=#{bannerSort}
+	     </if>
+	     <if test="startTime != null">
+	        and start_time=#{startTime}
+	     </if>
+	     <if test="endTime != null">
+	        and end_time=#{endTime}
+	     </if>
+	   </where>
+	</sql>
+
+	
+</mapper> 

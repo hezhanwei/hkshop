@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【推荐导航表】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2016-08-24 11:33:37
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.goods.GoodsRecommendNavigationDao">
+
+	<resultMap id="goodsRecommendNavigationResultMap" type="com.bluemobi.po.goods.GoodsRecommendNavigation">
+		<id property="navigationId" column="navigation_id" />
+       <result property="navigationName" column="navigation_name" />
+       <result property="navigationFilepath" column="navigation_filepath" />
+       <result property="urlLink" column="url_link" />
+       <result property="sort" column="sort" />
+       <result property="isDelete" column="is_delete" />
+       <result property="ctime" column="ctime" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="goodsRecommendNavigationResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="goodsRecommendNavigationResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.goods.GoodsRecommendNavigation" useGeneratedKeys="true" keyProperty="navigationId" >
+	   insert into goods_recommend_navigation (
+	     navigation_id,
+	     navigation_name,
+	     navigation_filepath,
+	     url_link,
+	     sort,
+	     is_delete,
+	     ctime
+	   )values (
+	     #{navigationId},
+	     #{navigationName},
+	     #{navigationFilepath},
+	     #{urlLink},
+	     #{sort},
+	     #{isDelete},
+	     #{ctime}
+	   )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.goods.GoodsRecommendNavigation">
+		update goods_recommend_navigation
+		<set>
+			<if test="navigationId != null">
+				navigation_id=#{navigationId},
+			</if>
+			<if test="navigationName != null">
+				navigation_name=#{navigationName},
+			</if>
+			<if test="navigationFilepath != null">
+				navigation_filepath=#{navigationFilepath},
+			</if>
+			<if test="urlLink != null">
+				url_link=#{urlLink},
+			</if>
+			<if test="sort != null">
+				sort=#{sort},
+			</if>
+			<if test="isDelete != null">
+				is_delete=#{isDelete},
+			</if>
+			<if test="ctime != null">
+				ctime=#{ctime},
+			</if>
+		</set>
+		<where>
+			navigation_id=#{navigationId} 
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+	     goods_recommend_navigation 
+	   where 
+	    navigation_id=#{navigationId} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="goodsRecommendNavigationResultMap">
+	   select 
+	    navigation_id,
+	    navigation_name,
+	    navigation_filepath,
+	    url_link,
+	    sort,
+	    is_delete,
+	    ctime
+	   from goods_recommend_navigation
+	   where 
+	    navigation_id=#{navigationId} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="goodsRecommendNavigationResultMap">
+	   select 
+	     navigation_id,
+	     navigation_name,
+	     navigation_filepath,
+	     url_link,
+	     sort,
+	     is_delete,
+	     ctime
+	   from goods_recommend_navigation
+	   <where>
+	     <if test="navigationId != null">
+	        navigation_id=#{navigationId}
+	     </if>
+	     <if test="navigationName != null">
+	        and navigation_name=#{navigationName}
+	     </if>
+	     <if test="navigationFilepath != null">
+	        and navigation_filepath=#{navigationFilepath}
+	     </if>
+	     <if test="urlLink != null">
+	        and url_link=#{urlLink}
+	     </if>
+	     <if test="sort != null">
+	        and sort=#{sort}
+	     </if>
+	     <if test="isDelete != null">
+	        and is_delete=#{isDelete}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	   </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+	    navigation_id,
+	    navigation_name,
+	    navigation_filepath,
+	    url_link,
+	    sort,
+	    is_delete,
+	    ctime
+	   from goods_recommend_navigation
+	   where 
+	    navigation_id=#{navigationId} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+	     navigation_id,
+	     navigation_name,
+	     navigation_filepath,
+	     url_link,
+	     sort,
+	     is_delete,
+	     ctime
+	   from goods_recommend_navigation
+	   <where>
+	     <if test="navigationId != null">
+	        navigation_id=#{navigationId}
+	     </if>
+	     <if test="navigationName != null">
+	        and navigation_name=#{navigationName}
+	     </if>
+	     <if test="navigationFilepath != null">
+	        and navigation_filepath=#{navigationFilepath}
+	     </if>
+	     <if test="urlLink != null">
+	        and url_link=#{urlLink}
+	     </if>
+	     <if test="sort != null">
+	        and sort=#{sort}
+	     </if>
+	     <if test="isDelete != null">
+	        and is_delete=#{isDelete}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	   </where>
+	</select>
+	
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+	     navigation_id,
+	     navigation_name,
+	     navigation_filepath,
+	     url_link,
+	     sort,
+	     is_delete,
+	     ctime
+	<include refid="pageCondition" />
+	limit #{offset},#{rows}
+	</select>
+
+	<select id="pageCount" parameterType="map" resultType="int">
+	   select count(1)
+	   <include refid="pageCondition" />
+	</select>
+
+	<sql id="pageCondition">
+	   from goods_recommend_navigation
+	   <where>
+	     <if test="navigationId != null">
+	        navigation_id=#{navigationId}
+	     </if>
+	     <if test="navigationName != null">
+	        and navigation_name=#{navigationName}
+	     </if>
+	     <if test="navigationFilepath != null">
+	        and navigation_filepath=#{navigationFilepath}
+	     </if>
+	     <if test="urlLink != null">
+	        and url_link=#{urlLink}
+	     </if>
+	     <if test="sort != null">
+	        and sort=#{sort}
+	     </if>
+	     <if test="isDelete != null">
+	        and is_delete=#{isDelete}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	   </where>
+	</sql>
+	
+	<!--查询推荐导航  -->
+	<select id="getGoodsRecommendNavigation" parameterType="com.bluemobi.po.goods.GoodsRecommendNavigation" 
+		resultMap="mapResultMap">
+		select 
+			 navigation_id,
+		     navigation_name,
+		     navigation_filepath,
+		     url_link,
+		     sort,
+		     is_delete,
+		     ctime
+		from goods_recommend_navigation
+	
+	</select>
+
+	
+</mapper> 

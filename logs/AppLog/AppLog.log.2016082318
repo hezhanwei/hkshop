@@ -1,0 +1,12 @@
+[2016-08-23 18:25:40 INFO][DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2016-08-23 18:25:40 INFO][DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6e58f809, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@13044f78, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7ffd5908, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51e05ddd, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@61328229]
+[2016-08-23 18:25:40 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-main-single.xml]
+[2016-08-23 18:25:40 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-dataSource.xml]
+[2016-08-23 18:25:41 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-mybatis.xml]
+[2016-08-23 18:25:41 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-transaction.xml]
+[2016-08-23 18:25:41 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-filter.xml]
+[2016-08-23 18:25:41 INFO][GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@4eb725a7: startup date [Tue Aug 23 18:25:41 CST 2016]; root of context hierarchy
+[2016-08-23 18:25:41 INFO][PropertySourcesPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[2016-08-23 18:25:44 INFO][DruidDataSource]{dataSource-1} inited
+[2016-08-23 18:25:44 INFO][GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@4eb725a7: startup date [Tue Aug 23 18:25:41 CST 2016]; root of context hierarchy
+[2016-08-23 18:25:44 INFO][DruidDataSource]{dataSource-1} closed

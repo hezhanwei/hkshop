@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【今日特卖分类表】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2016-08-24 10:45:02
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.goods.GoodsSpecialsaleDao">
+
+	<resultMap id="goodsSpecialsaleResultMap" type="com.bluemobi.po.goods.GoodsSpecialsale">
+		<id property="specialsaleId" column="specialsale_id" />
+       <result property="classifyId" column="classify_id" />
+       <result property="classifyName" column="classify_name" />
+       <result property="filepath" column="filepath" />
+       <result property="sort" column="sort" />
+       <result property="status" column="status" />
+       <result property="createBy" column="create_by" />
+       <result property="ctime" column="ctime" />
+       <result property="beginTime" column="begin_time" />
+       <result property="endTime" column="end_time" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="goodsSpecialsaleResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="goodsSpecialsaleResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.goods.GoodsSpecialsale" useGeneratedKeys="true" keyProperty="specialsaleId" >
+	   insert into goods_specialsale (
+	     specialsale_id,
+	     classify_id,
+	     classify_name,
+	     filepath,
+	     sort,
+	     status,
+	     create_by,
+	     ctime,
+	     begin_time,
+	     end_time
+	   )values (
+	     #{specialsaleId},
+	     #{classifyId},
+	     #{classifyName},
+	     #{filepath},
+	     #{sort},
+	     #{status},
+	     #{createBy},
+	     #{ctime},
+	     #{beginTime},
+	     #{endTime}
+	   )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.goods.GoodsSpecialsale">
+		update goods_specialsale
+		<set>
+			<if test="specialsaleId != null">
+				specialsale_id=#{specialsaleId},
+			</if>
+			<if test="classifyId != null">
+				classify_id=#{classifyId},
+			</if>
+			<if test="classifyName != null">
+				classify_name=#{classifyName},
+			</if>
+			<if test="filepath != null">
+				filepath=#{filepath},
+			</if>
+			<if test="sort != null">
+				sort=#{sort},
+			</if>
+			<if test="status != null">
+				status=#{status},
+			</if>
+			<if test="createBy != null">
+				create_by=#{createBy},
+			</if>
+			<if test="ctime != null">
+				ctime=#{ctime},
+			</if>
+			<if test="beginTime != null">
+				begin_time=#{beginTime},
+			</if>
+			<if test="endTime != null">
+				end_time=#{endTime},
+			</if>
+		</set>
+		<where>
+			specialsale_id=#{specialsaleId} 
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+	     goods_specialsale 
+	   where 
+	    specialsale_id=#{specialsaleId} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="goodsSpecialsaleResultMap">
+	   select 
+	    specialsale_id,
+	    classify_id,
+	    classify_name,
+	    filepath,
+	    sort,
+	    status,
+	    create_by,
+	    ctime,
+	    begin_time,
+	    end_time
+	   from goods_specialsale
+	   where 
+	    specialsale_id=#{specialsaleId} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="goodsSpecialsaleResultMap">
+	   select 
+	     specialsale_id,
+	     classify_id,
+	     classify_name,
+	     filepath,
+	     sort,
+	     status,
+	     create_by,
+	     ctime,
+	     begin_time,
+	     end_time
+	   from goods_specialsale
+	   <where>
+	     <if test="specialsaleId != null">
+	        specialsale_id=#{specialsaleId}
+	     </if>
+	     <if test="classifyId != null">
+	        and classify_id=#{classifyId}
+	     </if>
+	     <if test="classifyName != null">
+	        and classify_name=#{classifyName}
+	     </if>
+	     <if test="filepath != null">
+	        and filepath=#{filepath}
+	     </if>
+	     <if test="sort != null">
+	        and sort=#{sort}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="createBy != null">
+	        and create_by=#{createBy}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="beginTime != null">
+	        and begin_time=#{beginTime}
+	     </if>
+	     <if test="endTime != null">
+	        and end_time=#{endTime}
+	     </if>
+	   </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+	    specialsale_id,
+	    classify_id,
+	    classify_name,
+	    filepath,
+	    sort,
+	    status,
+	    create_by,
+	    ctime,
+	    begin_time,
+	    end_time
+	   from goods_specialsale
+	   where 
+	    specialsale_id=#{specialsaleId} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+	     specialsale_id,
+	     classify_id,
+	     classify_name,
+	     filepath,
+	     sort,
+	     status,
+	     create_by,
+	     ctime,
+	     begin_time,
+	     end_time
+	   from goods_specialsale
+	   <where>
+	     <if test="specialsaleId != null">
+	        specialsale_id=#{specialsaleId}
+	     </if>
+	     <if test="classifyId != null">
+	        and classify_id=#{classifyId}
+	     </if>
+	     <if test="classifyName != null">
+	        and classify_name=#{classifyName}
+	     </if>
+	     <if test="filepath != null">
+	        and filepath=#{filepath}
+	     </if>
+	     <if test="sort != null">
+	        and sort=#{sort}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="createBy != null">
+	        and create_by=#{createBy}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="beginTime != null">
+	        and begin_time=#{beginTime}
+	     </if>
+	     <if test="endTime != null">
+	        and end_time=#{endTime}
+	     </if>
+	   </where>
+	</select>
+	
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+	     specialsale_id,
+	     classify_id,
+	     classify_name,
+	     filepath,
+	     sort,
+	     status,
+	     create_by,
+	     ctime,
+	     begin_time,
+	     end_time
+	<include refid="pageCondition" />
+	limit #{offset},#{rows}
+	</select>
+
+	<select id="pageCount" parameterType="map" resultType="int">
+	   select count(1)
+	   <include refid="pageCondition" />
+	</select>
+
+	<sql id="pageCondition">
+	   from goods_specialsale
+	   <where>
+	     <if test="specialsaleId != null">
+	        specialsale_id=#{specialsaleId}
+	     </if>
+	     <if test="classifyId != null">
+	        and classify_id=#{classifyId}
+	     </if>
+	     <if test="classifyName != null">
+	        and classify_name=#{classifyName}
+	     </if>
+	     <if test="filepath != null">
+	        and filepath=#{filepath}
+	     </if>
+	     <if test="sort != null">
+	        and sort=#{sort}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="createBy != null">
+	        and create_by=#{createBy}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="beginTime != null">
+	        and begin_time=#{beginTime}
+	     </if>
+	     <if test="endTime != null">
+	        and end_time=#{endTime}
+	     </if>
+	   </where>
+	</sql>
+
+	<!--  -->
+	<select id="getCountryClassify" parameterType="com.bluemobi.po.goods.GoodsSpecialsale" resultMap="mapResultMap">
+		select 
+	     specialsale_id,
+	     classify_id,
+	     classify_name,
+	     filepath,
+	     sort,
+	     status,
+	     create_by,
+	     ctime,
+	     begin_time,
+	     end_time
+		<include refid="pageCondition" />
+	</select>
+	
+</mapper> 

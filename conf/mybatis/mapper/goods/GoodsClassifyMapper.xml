@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【商品分类表】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2016-08-23 18:06:29
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.goods.GoodsClassifyDao">
+
+	<resultMap id="goodsClassifyResultMap" type="com.bluemobi.po.goods.GoodsClassify">
+		<id property="classifyId" column="classify_id" />
+       <result property="classifyName" column="classify_name" />
+       <result property="classifySort" column="classify_sort" />
+       <result property="type" column="type" />
+       <result property="isDelete" column="is_delete" />
+       <result property="ctime" column="ctime" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="goodsClassifyResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="goodsClassifyResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.goods.GoodsClassify" useGeneratedKeys="true" keyProperty="classifyId" >
+	   insert into goods_classify (
+	     classify_id,
+	     classify_name,
+	     classify_sort,
+	     type,
+	     is_delete,
+	     ctime
+	   )values (
+	     #{classifyId},
+	     #{classifyName},
+	     #{classifySort},
+	     #{type},
+	     #{isDelete},
+	     #{ctime}
+	   )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.goods.GoodsClassify">
+		update goods_classify
+		<set>
+			<if test="classifyId != null">
+				classify_id=#{classifyId},
+			</if>
+			<if test="classifyName != null">
+				classify_name=#{classifyName},
+			</if>
+			<if test="classifySort != null">
+				classify_sort=#{classifySort},
+			</if>
+			<if test="type != null">
+				type=#{type},
+			</if>
+			<if test="isDelete != null">
+				is_delete=#{isDelete},
+			</if>
+			<if test="ctime != null">
+				ctime=#{ctime},
+			</if>
+		</set>
+		<where>
+			classify_id=#{classifyId} 
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+	     goods_classify 
+	   where 
+	    classify_id=#{classifyId} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="goodsClassifyResultMap">
+	   select 
+	    classify_id,
+	    classify_name,
+	    classify_sort,
+	    type,
+	    is_delete,
+	    ctime
+	   from goods_classify
+	   where 
+	    classify_id=#{classifyId} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="goodsClassifyResultMap">
+	   select 
+	     classify_id,
+	     classify_name,
+	     classify_sort,
+	     type,
+	     is_delete,
+	     ctime
+	   from goods_classify
+	   <where>
+	     <if test="classifyId != null">
+	        classify_id=#{classifyId}
+	     </if>
+	     <if test="classifyName != null">
+	        and classify_name=#{classifyName}
+	     </if>
+	     <if test="classifySort != null">
+	        and classify_sort=#{classifySort}
+	     </if>
+	     <if test="type != null">
+	        and type=#{type}
+	     </if>
+	     <if test="isDelete != null">
+	        and is_delete=#{isDelete}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	   </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+	    classify_id,
+	    classify_name,
+	    classify_sort,
+	    type,
+	    is_delete,
+	    ctime
+	   from goods_classify
+	   where 
+	    classify_id=#{classifyId} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+	     classify_id,
+	     classify_name,
+	     classify_sort,
+	     type,
+	     is_delete,
+	     ctime
+	   from goods_classify
+	   <where>
+	     <if test="classifyId != null">
+	        classify_id=#{classifyId}
+	     </if>
+	     <if test="classifyName != null">
+	        and classify_name=#{classifyName}
+	     </if>
+	     <if test="classifySort != null">
+	        and classify_sort=#{classifySort}
+	     </if>
+	     <if test="type != null">
+	        and type=#{type}
+	     </if>
+	     <if test="isDelete != null">
+	        and is_delete=#{isDelete}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	   </where>
+	</select>
+	
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+	     classify_id,
+	     classify_name,
+	     classify_sort,
+	     type,
+	     is_delete,
+	     ctime
+	<include refid="pageCondition" />
+	limit #{offset},#{rows}
+	</select>
+
+	<select id="pageCount" parameterType="map" resultType="int">
+	   select count(1)
+	   <include refid="pageCondition" />
+	</select>
+
+	<sql id="pageCondition">
+	   from goods_classify
+	   <where>
+	     <if test="classifyId != null">
+	        classify_id=#{classifyId}
+	     </if>
+	     <if test="classifyName != null">
+	        and classify_name=#{classifyName}
+	     </if>
+	     <if test="classifySort != null">
+	        and classify_sort=#{classifySort}
+	     </if>
+	     <if test="type != null">
+	        and type=#{type}
+	     </if>
+	     <if test="isDelete != null">
+	        and is_delete=#{isDelete}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	   </where>
+	</sql>
+	
+	<!--  -->
+	<select id="getGoodsClassifys" parameterType="com.bluemobi.po.goods.GoodsClassify"  resultMap="goodsClassifyResultMap">
+		SELECT 
+			 classify_id,
+		     classify_name,
+		     classify_sort,
+		     type,
+		     is_delete,
+		     ctime
+		<include refid="pageCondition"></include>
+	</select>
+
+	
+</mapper> 

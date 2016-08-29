@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【平台文章表】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2016-08-29 14:29:33
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.cms.CmsArticleDao">
+
+	<resultMap id="cmsArticleResultMap" type="com.bluemobi.po.cms.CmsArticle">
+		<id property="articleId" column="article_id" />
+       <result property="author" column="author" />
+       <result property="title" column="title" />
+       <result property="titleCode" column="title_code" />
+       <result property="content" column="content" />
+       <result property="type" column="type" />
+       <result property="status" column="status" />
+       <result property="ctime" column="ctime" />
+       <result property="createBy" column="create_by" />
+       <result property="mtime" column="mtime" />
+       <result property="updateBy" column="update_by" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="cmsArticleResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="cmsArticleResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.cms.CmsArticle" useGeneratedKeys="true" keyProperty="articleId" >
+	   insert into cms_article (
+	     article_id,
+	     author,
+	     title,
+	     title_code,
+	     content,
+	     type,
+	     status,
+	     ctime,
+	     create_by,
+	     mtime,
+	     update_by
+	   )values (
+	     #{articleId},
+	     #{author},
+	     #{title},
+	     #{titleCode},
+	     #{content},
+	     #{type},
+	     #{status},
+	     #{ctime},
+	     #{createBy},
+	     #{mtime},
+	     #{updateBy}
+	   )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.cms.CmsArticle">
+		update cms_article
+		<set>
+			<if test="articleId != null">
+				article_id=#{articleId},
+			</if>
+			<if test="author != null">
+				author=#{author},
+			</if>
+			<if test="title != null">
+				title=#{title},
+			</if>
+			<if test="titleCode != null">
+				title_code=#{titleCode},
+			</if>
+			<if test="content != null">
+				content=#{content},
+			</if>
+			<if test="type != null">
+				type=#{type},
+			</if>
+			<if test="status != null">
+				status=#{status},
+			</if>
+			<if test="ctime != null">
+				ctime=#{ctime},
+			</if>
+			<if test="createBy != null">
+				create_by=#{createBy},
+			</if>
+			<if test="mtime != null">
+				mtime=#{mtime},
+			</if>
+			<if test="updateBy != null">
+				update_by=#{updateBy},
+			</if>
+		</set>
+		<where>
+			article_id=#{articleId} 
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+	     cms_article 
+	   where 
+	    article_id=#{articleId} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="cmsArticleResultMap">
+	   select 
+	    article_id,
+	    author,
+	    title,
+	    title_code,
+	    content,
+	    type,
+	    status,
+	    ctime,
+	    create_by,
+	    mtime,
+	    update_by
+	   from cms_article
+	   where 
+	    article_id=#{articleId} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="cmsArticleResultMap">
+	   select 
+	     article_id,
+	     author,
+	     title,
+	     title_code,
+	     content,
+	     type,
+	     status,
+	     ctime,
+	     create_by,
+	     mtime,
+	     update_by
+	   from cms_article
+	   <where>
+	     <if test="articleId != null">
+	        article_id=#{articleId}
+	     </if>
+	     <if test="author != null">
+	        and author=#{author}
+	     </if>
+	     <if test="title != null">
+	        and title=#{title}
+	     </if>
+	     <if test="titleCode != null">
+	        and title_code=#{titleCode}
+	     </if>
+	     <if test="content != null">
+	        and content=#{content}
+	     </if>
+	     <if test="type != null">
+	        and type=#{type}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="createBy != null">
+	        and create_by=#{createBy}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	     <if test="updateBy != null">
+	        and update_by=#{updateBy}
+	     </if>
+	   </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+	    article_id,
+	    author,
+	    title,
+	    title_code,
+	    content,
+	    type,
+	    status,
+	    ctime,
+	    create_by,
+	    mtime,
+	    update_by
+	   from cms_article
+	   where 
+	    article_id=#{articleId} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+	     article_id,
+	     author,
+	     title,
+	     title_code,
+	     content,
+	     type,
+	     status,
+	     ctime,
+	     create_by,
+	     mtime,
+	     update_by
+	   from cms_article
+	   <where>
+	     <if test="articleId != null">
+	        article_id=#{articleId}
+	     </if>
+	     <if test="author != null">
+	        and author=#{author}
+	     </if>
+	     <if test="title != null">
+	        and title=#{title}
+	     </if>
+	     <if test="titleCode != null">
+	        and title_code=#{titleCode}
+	     </if>
+	     <if test="content != null">
+	        and content=#{content}
+	     </if>
+	     <if test="type != null">
+	        and type=#{type}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="createBy != null">
+	        and create_by=#{createBy}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	     <if test="updateBy != null">
+	        and update_by=#{updateBy}
+	     </if>
+	   </where>
+	</select>
+	
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+	     article_id,
+	     author,
+	     title,
+	     title_code,
+	     content,
+	     type,
+	     status,
+	     ctime,
+	     create_by,
+	     mtime,
+	     update_by
+	<include refid="pageCondition" />
+	limit #{offset},#{rows}
+	</select>
+
+	<select id="pageCount" parameterType="map" resultType="int">
+	   select count(1)
+	   <include refid="pageCondition" />
+	</select>
+
+	<sql id="pageCondition">
+	   from cms_article
+	   <where>
+	     <if test="articleId != null">
+	        article_id=#{articleId}
+	     </if>
+	     <if test="author != null">
+	        and author=#{author}
+	     </if>
+	     <if test="title != null">
+	        and title=#{title}
+	     </if>
+	     <if test="titleCode != null">
+	        and title_code=#{titleCode}
+	     </if>
+	     <if test="content != null">
+	        and content=#{content}
+	     </if>
+	     <if test="type != null">
+	        and type=#{type}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="createBy != null">
+	        and create_by=#{createBy}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	     <if test="updateBy != null">
+	        and update_by=#{updateBy}
+	     </if>
+	   </where>
+	</sql>
+
+	
+</mapper> 

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【每日好店】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2016-08-24 17:16:56
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.store.StoreRecommendDao">
+
+	<resultMap id="storeRecommendResultMap" type="com.bluemobi.po.store.StoreRecommend">
+		<id property="recommendId" column="recommend_id" />
+       <result property="storeId" column="store_id" />
+       <result property="storeName" column="store_name" />
+       <result property="recommendSort" column="recommend_sort" />
+       <result property="recommendStatus" column="recommend_status" />
+       <result property="ctime" column="ctime" />
+       <result property="mtime" column="mtime" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="storeRecommendResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="storeRecommendResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.store.StoreRecommend" useGeneratedKeys="true" keyProperty="recommendId" >
+	   insert into store_recommend (
+	     recommend_id,
+	     store_id,
+	     store_name,
+	     recommend_sort,
+	     recommend_status,
+	     ctime,
+	     mtime
+	   )values (
+	     #{recommendId},
+	     #{storeId},
+	     #{storeName},
+	     #{recommendSort},
+	     #{recommendStatus},
+	     #{ctime},
+	     #{mtime}
+	   )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.store.StoreRecommend">
+		update store_recommend
+		<set>
+			<if test="recommendId != null">
+				recommend_id=#{recommendId},
+			</if>
+			<if test="storeId != null">
+				store_id=#{storeId},
+			</if>
+			<if test="storeName != null">
+				store_name=#{storeName},
+			</if>
+			<if test="recommendSort != null">
+				recommend_sort=#{recommendSort},
+			</if>
+			<if test="recommendStatus != null">
+				recommend_status=#{recommendStatus},
+			</if>
+			<if test="ctime != null">
+				ctime=#{ctime},
+			</if>
+			<if test="mtime != null">
+				mtime=#{mtime},
+			</if>
+		</set>
+		<where>
+			recommend_id=#{recommendId} 
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+	     store_recommend 
+	   where 
+	    recommend_id=#{recommendId} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="storeRecommendResultMap">
+	   select 
+	    recommend_id,
+	    store_id,
+	    store_name,
+	    recommend_sort,
+	    recommend_status,
+	    ctime,
+	    mtime
+	   from store_recommend
+	   where 
+	    recommend_id=#{recommendId} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="storeRecommendResultMap">
+	   select 
+	     recommend_id,
+	     store_id,
+	     store_name,
+	     recommend_sort,
+	     recommend_status,
+	     ctime,
+	     mtime
+	   from store_recommend
+	   <where>
+	     <if test="recommendId != null">
+	        recommend_id=#{recommendId}
+	     </if>
+	     <if test="storeId != null">
+	        and store_id=#{storeId}
+	     </if>
+	     <if test="storeName != null">
+	        and store_name=#{storeName}
+	     </if>
+	     <if test="recommendSort != null">
+	        and recommend_sort=#{recommendSort}
+	     </if>
+	     <if test="recommendStatus != null">
+	        and recommend_status=#{recommendStatus}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	   </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+	    recommend_id,
+	    store_id,
+	    store_name,
+	    recommend_sort,
+	    recommend_status,
+	    ctime,
+	    mtime
+	   from store_recommend
+	   where 
+	    recommend_id=#{recommendId} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+	     recommend_id,
+	     store_id,
+	     store_name,
+	     recommend_sort,
+	     recommend_status,
+	     ctime,
+	     mtime
+	   from store_recommend
+	   <where>
+	     <if test="recommendId != null">
+	        recommend_id=#{recommendId}
+	     </if>
+	     <if test="storeId != null">
+	        and store_id=#{storeId}
+	     </if>
+	     <if test="storeName != null">
+	        and store_name=#{storeName}
+	     </if>
+	     <if test="recommendSort != null">
+	        and recommend_sort=#{recommendSort}
+	     </if>
+	     <if test="recommendStatus != null">
+	        and recommend_status=#{recommendStatus}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	   </where>
+	</select>
+	
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+	     recommend_id,
+	     store_id,
+	     store_name,
+	     recommend_sort,
+	     recommend_status,
+	     ctime,
+	     mtime
+	<include refid="pageCondition" />
+	limit #{offset},#{rows}
+	</select>
+
+	<select id="pageCount" parameterType="map" resultType="int">
+	   select count(1)
+	   <include refid="pageCondition" />
+	</select>
+
+	<sql id="pageCondition">
+	   from store_recommend
+	   <where>
+	     <if test="recommendId != null">
+	        recommend_id=#{recommendId}
+	     </if>
+	     <if test="storeId != null">
+	        and store_id=#{storeId}
+	     </if>
+	     <if test="storeName != null">
+	        and store_name=#{storeName}
+	     </if>
+	     <if test="recommendSort != null">
+	        and recommend_sort=#{recommendSort}
+	     </if>
+	     <if test="recommendStatus != null">
+	        and recommend_status=#{recommendStatus}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	   </where>
+	</sql>
+
+	
+</mapper> 

@@ -1,0 +1,32 @@
+[2016-08-17 10:15:33 INFO][SimpleMail]runOrder
+[2016-08-17 10:15:33 ERROR][SimpleMail]Exception
+[2016-08-17 10:15:33 ERROR][SimpleMail]Exception:【{}】
+javax.mail.AuthenticationFailedException
+	at javax.mail.Service.connect(Service.java:264)
+	at javax.mail.Service.connect(Service.java:134)
+	at com.bluemobi.util.SimpleMail.runOrder(SimpleMail.java:108)
+	at com.bluemobi.util.SimpleMail.main(SimpleMail.java:137)
+[2016-08-17 10:15:33 INFO][SimpleMail]runOrder
+[2016-08-17 10:16:53 INFO][SimpleMail]runOrder
+[2016-08-17 10:18:03 ERROR][SimpleMail]Exception
+[2016-08-17 10:18:03 ERROR][SimpleMail]Exception:【{}】
+javax.mail.AuthenticationFailedException
+	at javax.mail.Service.connect(Service.java:264)
+	at javax.mail.Service.connect(Service.java:134)
+	at com.bluemobi.util.SimpleMail.runOrder(SimpleMail.java:108)
+	at com.bluemobi.util.SimpleMail.main(SimpleMail.java:137)
+[2016-08-17 10:42:29 INFO][SimpleMail]runOrder
+[2016-08-17 10:42:31 ERROR][SimpleMail]Exception
+[2016-08-17 10:42:31 ERROR][SimpleMail]Exception:【{}】
+javax.mail.MessagingException: 553 Mail from must equal authorized user
+
+	at com.sun.mail.smtp.SMTPTransport.issueCommand(SMTPTransport.java:1020)
+	at com.sun.mail.smtp.SMTPTransport.mailFrom(SMTPTransport.java:716)
+	at com.sun.mail.smtp.SMTPTransport.sendMessage(SMTPTransport.java:388)
+	at com.bluemobi.util.SimpleMail.runOrder(SimpleMail.java:109)
+	at com.bluemobi.util.SimpleMail.main(SimpleMail.java:137)
+[2016-08-17 10:42:31 INFO][SimpleMail]runOrder
+[2016-08-17 10:43:10 INFO][SimpleMail]runOrder
+[2016-08-17 10:43:13 INFO][SimpleMail]runOrder
+[2016-08-17 10:47:13 INFO][SimpleMail]runOrder
+[2016-08-17 10:47:14 INFO][SimpleMail]runOrder

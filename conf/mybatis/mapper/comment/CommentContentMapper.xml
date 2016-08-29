@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2015-10-21 14:55:28
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.comment.CommentContentDao">
+
+	<resultMap id="commentContentResultMap" type="com.bluemobi.po.comment.CommentContent">
+		<id property="id" column="id" />
+		<result property="categoryId" column="category_id" />
+		<result property="content" column="content" />
+		<result property="ctime" column="ctime" />
+		<result property="ip" column="ip" />
+		<result property="isAgen" column="is_agen" />
+		<result property="isDel" column="is_del" />
+		<result property="lastreplyUserid" column="lastreply_userid" />
+		<result property="mtime" column="mtime" />
+		<result property="numsAgree" column="nums_agree" />
+		<result property="numsReply" column="nums_reply" />
+		<result property="pid" column="pid" />
+		<result property="rankBase" column="rank_base" />
+		<result property="rankLogistics" column="rank_logistics" />
+		<result property="rankSpeed" column="rank_speed" />
+		<result property="status" column="status" />
+		<result property="title" column="title" />
+		<result property="toId" column="to_id" />
+		<result property="toOrderItemId" column="to_order_item_id" />
+		<result property="toStoreId" column="to_store_id" />
+		<result property="userType" column="user_type" />
+		<result property="userid" column="userid" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="commentContentResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="commentContentResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.comment.CommentContent">
+	   insert into comment_content (
+	     id,
+	     category_id,
+	     content,
+	     ctime,
+	     ip,
+	     is_agen,
+	     is_del,
+	     lastreply_userid,
+	     mtime,
+	     nums_agree,
+	     nums_reply,
+	     pid,
+	     rank_base,
+	     rank_logistics,
+	     rank_speed,
+	     status,
+	     title,
+	     to_id,
+	     to_order_item_id,
+	     to_store_id,
+	     user_type,
+	     userid
+	   )values (
+	     #{id},
+	     #{categoryId},
+	     #{content},
+	     #{ctime},
+	     #{ip},
+	     #{isAgen},
+	     #{isDel},
+	     #{lastreplyUserid},
+	     #{mtime},
+	     #{numsAgree},
+	     #{numsReply},
+	     #{pid},
+	     #{rankBase},
+	     #{rankLogistics},
+	     #{rankSpeed},
+	     #{status},
+	     #{title},
+	     #{toId},
+	     #{toOrderItemId},
+	     #{toStoreId},
+	     #{userType},
+	     #{userid}
+	   )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.comment.CommentContent">
+		update comment_content
+		<set>
+			<if test="id != null">
+				id=#{id},
+			</if>
+			<if test="categoryId != null">
+				category_id=#{categoryId},
+			</if>
+			<if test="content != null">
+				content=#{content},
+			</if>
+			<if test="ctime != null">
+				ctime=#{ctime},
+			</if>
+			<if test="ip != null">
+				ip=#{ip},
+			</if>
+			<if test="isAgen != null">
+				is_agen=#{isAgen},
+			</if>
+			<if test="isDel != null">
+				is_del=#{isDel},
+			</if>
+			<if test="lastreplyUserid != null">
+				lastreply_userid=#{lastreplyUserid},
+			</if>
+			<if test="mtime != null">
+				mtime=#{mtime},
+			</if>
+			<if test="numsAgree != null">
+				nums_agree=#{numsAgree},
+			</if>
+			<if test="numsReply != null">
+				nums_reply=#{numsReply},
+			</if>
+			<if test="pid != null">
+				pid=#{pid},
+			</if>
+			<if test="rankBase != null">
+				rank_base=#{rankBase},
+			</if>
+			<if test="rankLogistics != null">
+				rank_logistics=#{rankLogistics},
+			</if>
+			<if test="rankSpeed != null">
+				rank_speed=#{rankSpeed},
+			</if>
+			<if test="status != null">
+				status=#{status},
+			</if>
+			<if test="title != null">
+				title=#{title},
+			</if>
+			<if test="toId != null">
+				to_id=#{toId},
+			</if>
+			<if test="toOrderItemId != null">
+				to_order_item_id=#{toOrderItemId},
+			</if>
+			<if test="toStoreId != null">
+				to_store_id=#{toStoreId},
+			</if>
+			<if test="userType != null">
+				user_type=#{userType},
+			</if>
+			<if test="userid != null">
+				userid=#{userid},
+			</if>
+		</set>
+		<where>
+			id=#{id} 
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+	     comment_content 
+	   where 
+	    id=#{id} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="commentContentResultMap">
+	   select 
+	    id,
+	    category_id,
+	    content,
+	    ctime,
+	    ip,
+	    is_agen,
+	    is_del,
+	    lastreply_userid,
+	    mtime,
+	    nums_agree,
+	    nums_reply,
+	    pid,
+	    rank_base,
+	    rank_logistics,
+	    rank_speed,
+	    status,
+	    title,
+	    to_id,
+	    to_order_item_id,
+	    to_store_id,
+	    user_type,
+	    userid
+	   from comment_content
+	   where 
+	    id=#{id} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="commentContentResultMap">
+	   select 
+	     id,
+	     category_id,
+	     content,
+	     ctime,
+	     ip,
+	     is_agen,
+	     is_del,
+	     lastreply_userid,
+	     mtime,
+	     nums_agree,
+	     nums_reply,
+	     pid,
+	     rank_base,
+	     rank_logistics,
+	     rank_speed,
+	     status,
+	     title,
+	     to_id,
+	     to_order_item_id,
+	     to_store_id,
+	     user_type,
+	     userid
+	   from comment_content
+	   <where>
+	     <if test="id != null">
+	        id=#{id}
+	     </if>
+	     <if test="categoryId != null">
+	        and category_id=#{categoryId}
+	     </if>
+	     <if test="content != null">
+	        and content=#{content}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="ip != null">
+	        and ip=#{ip}
+	     </if>
+	     <if test="isAgen != null">
+	        and is_agen=#{isAgen}
+	     </if>
+	     <if test="isDel != null">
+	        and is_del=#{isDel}
+	     </if>
+	     <if test="lastreplyUserid != null">
+	        and lastreply_userid=#{lastreplyUserid}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	     <if test="numsAgree != null">
+	        and nums_agree=#{numsAgree}
+	     </if>
+	     <if test="numsReply != null">
+	        and nums_reply=#{numsReply}
+	     </if>
+	     <if test="pid != null">
+	        and pid=#{pid}
+	     </if>
+	     <if test="rankBase != null">
+	        and rank_base=#{rankBase}
+	     </if>
+	     <if test="rankLogistics != null">
+	        and rank_logistics=#{rankLogistics}
+	     </if>
+	     <if test="rankSpeed != null">
+	        and rank_speed=#{rankSpeed}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="title != null">
+	        and title=#{title}
+	     </if>
+	     <if test="toId != null">
+	        and to_id=#{toId}
+	     </if>
+	     <if test="toOrderItemId != null">
+	        and to_order_item_id=#{toOrderItemId}
+	     </if>
+	     <if test="toStoreId != null">
+	        and to_store_id=#{toStoreId}
+	     </if>
+	     <if test="userType != null">
+	        and user_type=#{userType}
+	     </if>
+	     <if test="userid != null">
+	        and userid=#{userid}
+	     </if>
+	   </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+	    id,
+	    category_id,
+	    content,
+	    ctime,
+	    ip,
+	    is_agen,
+	    is_del,
+	    lastreply_userid,
+	    mtime,
+	    nums_agree,
+	    nums_reply,
+	    pid,
+	    rank_base,
+	    rank_logistics,
+	    rank_speed,
+	    status,
+	    title,
+	    to_id,
+	    to_order_item_id,
+	    to_store_id,
+	    user_type,
+	    userid
+	   from comment_content
+	   where 
+	    id=#{id} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+	     id,
+	     category_id,
+	     content,
+	     ctime,
+	     ip,
+	     is_agen,
+	     is_del,
+	     lastreply_userid,
+	     mtime,
+	     nums_agree,
+	     nums_reply,
+	     pid,
+	     rank_base,
+	     rank_logistics,
+	     rank_speed,
+	     status,
+	     title,
+	     to_id,
+	     to_order_item_id,
+	     to_store_id,
+	     user_type,
+	     userid
+	   from comment_content
+	   <where>
+	     <if test="id != null">
+	        id=#{id}
+	     </if>
+	     <if test="categoryId != null">
+	        and category_id=#{categoryId}
+	     </if>
+	     <if test="content != null">
+	        and content=#{content}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="ip != null">
+	        and ip=#{ip}
+	     </if>
+	     <if test="isAgen != null">
+	        and is_agen=#{isAgen}
+	     </if>
+	     <if test="isDel != null">
+	        and is_del=#{isDel}
+	     </if>
+	     <if test="lastreplyUserid != null">
+	        and lastreply_userid=#{lastreplyUserid}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	     <if test="numsAgree != null">
+	        and nums_agree=#{numsAgree}
+	     </if>
+	     <if test="numsReply != null">
+	        and nums_reply=#{numsReply}
+	     </if>
+	     <if test="pid != null">
+	        and pid=#{pid}
+	     </if>
+	     <if test="rankBase != null">
+	        and rank_base=#{rankBase}
+	     </if>
+	     <if test="rankLogistics != null">
+	        and rank_logistics=#{rankLogistics}
+	     </if>
+	     <if test="rankSpeed != null">
+	        and rank_speed=#{rankSpeed}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="title != null">
+	        and title=#{title}
+	     </if>
+	     <if test="toId != null">
+	        and to_id=#{toId}
+	     </if>
+	     <if test="toOrderItemId != null">
+	        and to_order_item_id=#{toOrderItemId}
+	     </if>
+	     <if test="toStoreId != null">
+	        and to_store_id=#{toStoreId}
+	     </if>
+	     <if test="userType != null">
+	        and user_type=#{userType}
+	     </if>
+	     <if test="userid != null">
+	        and userid=#{userid}
+	     </if>
+	   </where>
+	</select>
+	
+	<sql id="pageCondition">
+        from comment_content
+       <where>
+         <if test="id != null">
+            id=#{id}
+         </if>
+         <if test="categoryId != null">
+            and category_id=#{categoryId}
+         </if>
+         <if test="content != null">
+            and content=#{content}
+         </if>
+         <if test="ctime != null">
+            and ctime=#{ctime}
+         </if>
+         <if test="ip != null">
+            and ip=#{ip}
+         </if>
+         <if test="isAgen != null">
+            and is_agen=#{isAgen}
+         </if>
+         <if test="isDel != null">
+            and is_del=#{isDel}
+         </if>
+         <if test="lastreplyUserid != null">
+            and lastreply_userid=#{lastreplyUserid}
+         </if>
+         <if test="mtime != null">
+            and mtime=#{mtime}
+         </if>
+         <if test="numsAgree != null">
+            and nums_agree=#{numsAgree}
+         </if>
+         <if test="numsReply != null">
+            and nums_reply=#{numsReply}
+         </if>
+         <if test="pid != null">
+            and pid=#{pid}
+         </if>
+         <if test="rankBase != null">
+            and rank_base=#{rankBase}
+         </if>
+         <if test="rankLogistics != null">
+            and rank_logistics=#{rankLogistics}
+         </if>
+         <if test="rankSpeed != null">
+            and rank_speed=#{rankSpeed}
+         </if>
+         <if test="status != null">
+            and status=#{status}
+         </if>
+         <if test="title != null">
+            and title=#{title}
+         </if>
+         <if test="toId != null">
+            and to_id=#{toId}
+         </if>
+         <if test="toOrderItemId != null">
+            and to_order_item_id=#{toOrderItemId}
+         </if>
+         <if test="toStoreId != null">
+            and to_store_id=#{toStoreId}
+         </if>
+         <if test="userType != null">
+            and user_type=#{userType}
+         </if>
+         <if test="userid != null">
+            and userid=#{userid}
+         </if>
+       </where>
+    </sql>
+    
+    
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+	     id,
+	     category_id,
+	     content,
+	     ctime,
+	     ip,
+	     is_agen,
+	     is_del,
+	     lastreply_userid,
+	     mtime,
+	     nums_agree,
+	     nums_reply,
+	     pid,
+	     rank_base,
+	     rank_logistics,
+	     rank_speed,
+	     status,
+	     title,
+	     to_id,
+	     to_order_item_id,
+	     to_store_id,
+	     user_type,
+	     userid
+	     <include refid="pageCondition" />
+	     limit #{offset},#{rows}
+	</select>
+	
+	<select id="pageCount" parameterType="map" resultType="int">
+        select count(1)
+        <include refid="pageCondition" />
+    </select>
+	
+	<select id="getCommentContentList" parameterType="map" resultMap="commentContentResultMap">
+       select 
+         id,
+         category_id,
+         content,
+         ctime,
+         ip,
+         is_agen,
+         is_del,
+         lastreply_userid,
+         mtime,
+         nums_agree,
+         nums_reply,
+         pid,
+         rank_base,
+         rank_logistics,
+         rank_speed,
+         status,
+         title,
+         to_id,
+         to_order_item_id,
+         to_store_id,
+         user_type,
+         userid
+       from comment_content
+       <where>
+         <if test="categoryId != null">
+            category_id=#{categoryId}
+         </if>
+         <if test="toId != null">
+            and to_id=#{toId}
+         </if>
+       </where>
+        order by ctime ASC
+    </select>
+    
+	<sql id="pageCommentContentPagesCondition">
+		FROM comment_content c ,cas_user u,goods_content g
+		<where>
+			c.userid = u.userid and g.content_id = c.to_id
+			<if test="pid != null">
+				and c.pid = #{pid}
+			</if>
+			<if test="isDel != null">
+				and c.is_del = #{isDel}
+			</if>
+			<if test="content != null">
+				and (c.content like #{content} )
+			</if>
+		</where>
+	</sql>
+    
+    
+    <select id="pageCommentContent" parameterType="map"
+	resultMap="pageResultMap">
+	SELECT c.id id,
+	u.username username,
+	g.name to_name,
+	c.rank_base rank_base,
+	c.rank_logistics rank_logistics,
+	c.rank_speed rank_speed,
+	c.ctime ctime,
+	c.status status,
+	c.is_del is_del
+	<include refid="pageCommentContentPagesCondition" />
+    limit #{offset},#{rows}
+    </select>
+    
+    <select id="pageCommentContentCount" parameterType="map" resultType="int">
+        select count(1)
+     <include refid="pageCommentContentPagesCondition" />
+	</select>
+	
+</mapper> 

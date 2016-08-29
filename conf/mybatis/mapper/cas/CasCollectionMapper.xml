@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【收藏表】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2016-08-11 16:07:12
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.cas.CasCollectionDao">
+
+	<resultMap id="casCollectionResultMap" type="com.bluemobi.po.cas.CasCollection">
+		<id property="collectionid" column="collectionid" />
+       <result property="userid" column="userid" />
+       <result property="collectionType" column="collection_type" />
+       <result property="storeorgoodsId" column="storeorgoods_id" />
+       <result property="ctime" column="ctime" />
+       <result property="mtime" column="mtime" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="casCollectionResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="casCollectionResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.cas.CasCollection" useGeneratedKeys="true" keyProperty="collectionid" >
+	   insert into cas_collection (
+	     collectionid,
+	     userid,
+	     collection_type,
+	     storeorgoods_id,
+	     ctime,
+	     mtime
+	   )values (
+	     #{collectionid},
+	     #{userid},
+	     #{collectionType},
+	     #{storeorgoodsId},
+	     #{ctime},
+	     #{mtime}
+	   )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.cas.CasCollection">
+		update cas_collection
+		<set>
+			<if test="collectionid != null">
+				collectionid=#{collectionid},
+			</if>
+			<if test="userid != null">
+				userid=#{userid},
+			</if>
+			<if test="collectionType != null">
+				collection_type=#{collectionType},
+			</if>
+			<if test="storeorgoodsId != null">
+				storeorgoods_id=#{storeorgoodsId},
+			</if>
+			<if test="ctime != null">
+				ctime=#{ctime},
+			</if>
+			<if test="mtime != null">
+				mtime=#{mtime},
+			</if>
+		</set>
+		<where>
+			collectionid=#{collectionid} 
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+	     cas_collection 
+	   where 
+	    collectionid=#{collectionid} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="casCollectionResultMap">
+	   select 
+	    collectionid,
+	    userid,
+	    collection_type,
+	    storeorgoods_id,
+	    ctime,
+	    mtime
+	   from cas_collection
+	   where 
+	    collectionid=#{collectionid} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="casCollectionResultMap">
+	   select 
+	     collectionid,
+	     userid,
+	     collection_type,
+	     storeorgoods_id,
+	     ctime,
+	     mtime
+	   from cas_collection
+	   <where>
+	     <if test="collectionid != null">
+	        collectionid=#{collectionid}
+	     </if>
+	     <if test="userid != null">
+	        and userid=#{userid}
+	     </if>
+	     <if test="collectionType != null">
+	        and collection_type=#{collectionType}
+	     </if>
+	     <if test="storeorgoodsId != null">
+	        and storeorgoods_id=#{storeorgoodsId}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	   </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+	    collectionid,
+	    userid,
+	    collection_type,
+	    storeorgoods_id,
+	    ctime,
+	    mtime
+	   from cas_collection
+	   where 
+	    collectionid=#{collectionid} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+	     collectionid,
+	     userid,
+	     collection_type,
+	     storeorgoods_id,
+	     ctime,
+	     mtime
+	   from cas_collection
+	   <where>
+	     <if test="collectionid != null">
+	        collectionid=#{collectionid}
+	     </if>
+	     <if test="userid != null">
+	        and userid=#{userid}
+	     </if>
+	     <if test="collectionType != null">
+	        and collection_type=#{collectionType}
+	     </if>
+	     <if test="storeorgoodsId != null">
+	        and storeorgoods_id=#{storeorgoodsId}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	   </where>
+	</select>
+	
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+	     collectionid,
+	     userid,
+	     collection_type,
+	     storeorgoods_id,
+	     ctime,
+	     mtime
+	<include refid="pageCondition" />
+	limit #{offset},#{rows}
+	</select>
+
+	<select id="pageCount" parameterType="map" resultType="int">
+	   select count(1)
+	   <include refid="pageCondition" />
+	</select>
+
+	<sql id="pageCondition">
+	   from cas_collection
+	   <where>
+	     <if test="collectionid != null">
+	        collectionid=#{collectionid}
+	     </if>
+	     <if test="userid != null">
+	        and userid=#{userid}
+	     </if>
+	     <if test="collectionType != null">
+	        and collection_type=#{collectionType}
+	     </if>
+	     <if test="storeorgoodsId != null">
+	        and storeorgoods_id=#{storeorgoodsId}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	   </where>
+	</sql>
+
+	
+</mapper> 

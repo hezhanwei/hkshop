@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【银行卡信息表】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2016-08-11 14:25:41
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.cas.CasUserBankDao">
+
+	<resultMap id="casUserBankResultMap" type="com.bluemobi.po.cas.CasUserBank">
+		<id property="bankid" column="bankid" />
+       <result property="userid" column="userid" />
+       <result property="bankNo" column="bank_no" />
+       <result property="bankName" column="bank_name" />
+       <result property="bankBranch" column="bank_branch" />
+       <result property="bankType" column="bank_type" />
+       <result property="status" column="status" />
+       <result property="ctime" column="ctime" />
+       <result property="mtime" column="mtime" />
+       <result property="updateBy" column="update_by" />
+       <result property="desc" column="desc" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="casUserBankResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="casUserBankResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.cas.CasUserBank" useGeneratedKeys="true" keyProperty="bankid" >
+	   insert into cas_user_bank (
+	     bankid,
+	     userid,
+	     bank_no,
+	     bank_name,
+	     bank_branch,
+	     bank_type,
+	     status,
+	     ctime,
+	     mtime,
+	     update_by,
+	     desc
+	   )values (
+	     #{bankid},
+	     #{userid},
+	     #{bankNo},
+	     #{bankName},
+	     #{bankBranch},
+	     #{bankType},
+	     #{status},
+	     #{ctime},
+	     #{mtime},
+	     #{updateBy},
+	     #{desc}
+	   )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.cas.CasUserBank">
+		update cas_user_bank
+		<set>
+			<if test="bankid != null">
+				bankid=#{bankid},
+			</if>
+			<if test="userid != null">
+				userid=#{userid},
+			</if>
+			<if test="bankNo != null">
+				bank_no=#{bankNo},
+			</if>
+			<if test="bankName != null">
+				bank_name=#{bankName},
+			</if>
+			<if test="bankBranch != null">
+				bank_branch=#{bankBranch},
+			</if>
+			<if test="bankType != null">
+				bank_type=#{bankType},
+			</if>
+			<if test="status != null">
+				status=#{status},
+			</if>
+			<if test="ctime != null">
+				ctime=#{ctime},
+			</if>
+			<if test="mtime != null">
+				mtime=#{mtime},
+			</if>
+			<if test="updateBy != null">
+				update_by=#{updateBy},
+			</if>
+			<if test="desc != null">
+				desc=#{desc},
+			</if>
+		</set>
+		<where>
+			bankid=#{bankid} 
+		</where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+	     cas_user_bank 
+	   where 
+	    bankid=#{bankid} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="casUserBankResultMap">
+	   select 
+	    bankid,
+	    userid,
+	    bank_no,
+	    bank_name,
+	    bank_branch,
+	    bank_type,
+	    status,
+	    ctime,
+	    mtime,
+	    update_by,
+	    desc
+	   from cas_user_bank
+	   where 
+	    bankid=#{bankid} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="casUserBankResultMap">
+	   select 
+	     bankid,
+	     userid,
+	     bank_no,
+	     bank_name,
+	     bank_branch,
+	     bank_type,
+	     status,
+	     ctime,
+	     mtime,
+	     update_by,
+	     desc
+	   from cas_user_bank
+	   <where>
+	     <if test="bankid != null">
+	        bankid=#{bankid}
+	     </if>
+	     <if test="userid != null">
+	        and userid=#{userid}
+	     </if>
+	     <if test="bankNo != null">
+	        and bank_no=#{bankNo}
+	     </if>
+	     <if test="bankName != null">
+	        and bank_name=#{bankName}
+	     </if>
+	     <if test="bankBranch != null">
+	        and bank_branch=#{bankBranch}
+	     </if>
+	     <if test="bankType != null">
+	        and bank_type=#{bankType}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	     <if test="updateBy != null">
+	        and update_by=#{updateBy}
+	     </if>
+	     <if test="desc != null">
+	        and desc=#{desc}
+	     </if>
+	   </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+	    bankid,
+	    userid,
+	    bank_no,
+	    bank_name,
+	    bank_branch,
+	    bank_type,
+	    status,
+	    ctime,
+	    mtime,
+	    update_by,
+	    desc
+	   from cas_user_bank
+	   where 
+	    bankid=#{bankid} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+	     bankid,
+	     userid,
+	     bank_no,
+	     bank_name,
+	     bank_branch,
+	     bank_type,
+	     status,
+	     ctime,
+	     mtime,
+	     update_by,
+	     desc
+	   from cas_user_bank
+	   <where>
+	     <if test="bankid != null">
+	        bankid=#{bankid}
+	     </if>
+	     <if test="userid != null">
+	        and userid=#{userid}
+	     </if>
+	     <if test="bankNo != null">
+	        and bank_no=#{bankNo}
+	     </if>
+	     <if test="bankName != null">
+	        and bank_name=#{bankName}
+	     </if>
+	     <if test="bankBranch != null">
+	        and bank_branch=#{bankBranch}
+	     </if>
+	     <if test="bankType != null">
+	        and bank_type=#{bankType}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	     <if test="updateBy != null">
+	        and update_by=#{updateBy}
+	     </if>
+	     <if test="desc != null">
+	        and desc=#{desc}
+	     </if>
+	   </where>
+	</select>
+	
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+	     bankid,
+	     userid,
+	     bank_no,
+	     bank_name,
+	     bank_branch,
+	     bank_type,
+	     status,
+	     ctime,
+	     mtime,
+	     update_by,
+	     desc
+	<include refid="pageCondition" />
+	limit #{offset},#{rows}
+	</select>
+
+	<select id="pageCount" parameterType="map" resultType="int">
+	   select count(1)
+	   <include refid="pageCondition" />
+	</select>
+
+	<sql id="pageCondition">
+	   from cas_user_bank
+	   <where>
+	     <if test="bankid != null">
+	        bankid=#{bankid}
+	     </if>
+	     <if test="userid != null">
+	        and userid=#{userid}
+	     </if>
+	     <if test="bankNo != null">
+	        and bank_no=#{bankNo}
+	     </if>
+	     <if test="bankName != null">
+	        and bank_name=#{bankName}
+	     </if>
+	     <if test="bankBranch != null">
+	        and bank_branch=#{bankBranch}
+	     </if>
+	     <if test="bankType != null">
+	        and bank_type=#{bankType}
+	     </if>
+	     <if test="status != null">
+	        and status=#{status}
+	     </if>
+	     <if test="ctime != null">
+	        and ctime=#{ctime}
+	     </if>
+	     <if test="mtime != null">
+	        and mtime=#{mtime}
+	     </if>
+	     <if test="updateBy != null">
+	        and update_by=#{updateBy}
+	     </if>
+	     <if test="desc != null">
+	        and desc=#{desc}
+	     </if>
+	   </where>
+	</sql>
+	
+	<!--getCasUserBanks 获取银行信息列表  -->
+	<select id="getCasUserBanks" parameterType="int" resultType="com.bluemobi.po.cas.CasUserBank">
+		SELECT 
+		    bankid,
+		    csb.userid,
+		    bank_no bankNo,
+		    bank_name bankName,
+		    bank_branch bankBranch,
+		    bank_type bankType,
+		    status,
+		    ctime,
+		    mtime,
+		    update_by updateBy,
+		    desc,
+		    username,
+		    phone
+	   FROM cas_user_bank csb
+	   LEFT JOIN cas_user cs ON csb.userid = cs.userid
+	   WHERE 
+	    userid=#{userid}
+	</select>
+
+	
+</mapper> 

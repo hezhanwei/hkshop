@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+【商品属性表，用以记录商品属性值】对象关系映射 配置 
+ @author AutoCode 309444359@qq.com
+ @date 2015-11-02 10:14:35
+ -->
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.bluemobi.dao.goods.GoodsPropertyDao">
+
+	<resultMap id="goodsPropertyResultMap" type="com.bluemobi.po.goods.GoodsProperty">
+		<id property="goodsPropertyId" column="goods_property_id" />
+        <id property="contentId" column="content_id" />
+        <id property="propertyId" column="property_id" />
+        <id property="propertyValueId" column="property_value_id" />
+	</resultMap>
+	<resultMap id="mapResultMap"  type="java.util.HashMap" extends="goodsPropertyResultMap"></resultMap>
+	<resultMap id="pageResultMap"  type="java.util.HashMap" extends="goodsPropertyResultMap"></resultMap>
+	
+	
+	<insert id="insert" parameterType="com.bluemobi.po.goods.GoodsProperty" useGeneratedKeys="true" keyProperty="goodsPropertyId">
+	   insert into goods_property (
+         goods_property_id,
+         content_id,
+         property_id,
+         property_value_id
+       )values (
+         #{goodsPropertyId},
+         #{contentId},
+         #{propertyId},
+         #{propertyValueId}
+       )
+	</insert>
+
+	<update id="update" parameterType="com.bluemobi.po.goods.GoodsProperty">
+		update goods_property
+        <set>
+            <if test="goodsPropertyId != null">
+                goods_property_id=#{goodsPropertyId},
+            </if>
+            <if test="contentId != null">
+                content_id=#{contentId},
+            </if>
+            <if test="propertyId != null">
+                property_id=#{propertyId},
+            </if>
+            <if test="propertyValueId != null">
+                property_value_id=#{propertyValueId},
+            </if>
+        </set>
+        <where>
+            goods_property_id=#{goodsPropertyId} 
+             andcontent_id=#{contentId} 
+             andproperty_id=#{propertyId} 
+             andproperty_value_id=#{propertyValueId} 
+        </where>
+	</update>
+
+	<delete id="delete" parameterType="map">
+	   delete from 
+         goods_property 
+       where 
+        goods_property_id=#{goodsPropertyId} 
+        and content_id=#{contentId} 
+        and property_id=#{propertyId} 
+        and property_value_id=#{propertyValueId} 
+	</delete>
+
+	<select id="selectObject" parameterType="map" resultMap="goodsPropertyResultMap">
+	   select 
+        goods_property_id,
+        content_id,
+        property_id,
+        property_value_id
+       from goods_property
+       where 
+        goods_property_id=#{goodsPropertyId} 
+        and content_id=#{contentId} 
+        and property_id=#{propertyId} 
+        and property_value_id=#{propertyValueId} 
+	</select>
+	
+	<select id="selectObjectList" parameterType="map" resultMap="goodsPropertyResultMap">
+	   select 
+         goods_property_id,
+         content_id,
+         property_id,
+         property_value_id
+       from goods_property
+       <where>
+         <if test="goodsPropertyId != null">
+            goods_property_id=#{goodsPropertyId}
+         </if>
+         <if test="contentId != null">
+            and content_id=#{contentId}
+         </if>
+         <if test="propertyId != null">
+            and property_id=#{propertyId}
+         </if>
+         <if test="propertyValueId != null">
+            and property_value_id=#{propertyValueId}
+         </if>
+       </where>
+	</select>
+
+	<select id="selectMap" parameterType="map" resultMap="mapResultMap">
+	   select 
+        goods_property_id,
+        content_id,
+        property_id,
+        property_value_id
+       from goods_property
+       where 
+        goods_property_id=#{goodsPropertyId} 
+        and content_id=#{contentId} 
+        and property_id=#{propertyId} 
+        and property_value_id=#{propertyValueId} 
+	</select>
+
+	<select id="selectMapList" parameterType="map" resultMap="mapResultMap">
+	   select 
+         goods_property_id,
+         content_id,
+         property_id,
+         property_value_id
+       from goods_property
+       <where>
+         <if test="goodsPropertyId != null">
+            goods_property_id=#{goodsPropertyId}
+         </if>
+         <if test="contentId != null">
+            and content_id=#{contentId}
+         </if>
+         <if test="propertyId != null">
+            and property_id=#{propertyId}
+         </if>
+         <if test="propertyValueId != null">
+            and property_value_id=#{propertyValueId}
+         </if>
+       </where>
+	</select>
+	
+	<select id="page" parameterType="map" resultMap="pageResultMap">
+	   select 
+         goods_property_id,
+         content_id,
+         property_id,
+         property_value_id
+	<include refid="pageCondition" />
+	limit #{offset},#{rows}
+	</select>
+
+	<select id="pageCount" parameterType="map" resultType="int">
+	   select count(1)
+	   <include refid="pageCondition" />
+	</select>
+
+	<sql id="pageCondition">
+	   from goods_property
+	   <where>
+	     <if test="goodsPropertyId != null">
+            goods_property_id=#{goodsPropertyId}
+         </if>
+         <if test="contentId != null">
+            and content_id=#{contentId}
+         </if>
+         <if test="propertyId != null">
+            and property_id=#{propertyId}
+         </if>
+         <if test="propertyValueId != null">
+            and property_value_id=#{propertyValueId}
+         </if>
+	   </where>
+	</sql>
+
+
+    <insert id="insertGoodsProperties" parameterType="java.util.List">
+        insert into goods_property 
+            (
+                goods_property_id,
+                content_id,
+                property_id,
+                property_value_id
+            ) 
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.goodsPropertyId},
+                #{item.contentId},
+                #{item.propertyId},
+                #{item.propertyValueId}
+            )
+        </foreach>
+    </insert>
+    
+    <delete id="deleteByGoodsContentId" parameterType="map">
+       delete from 
+         goods_property 
+       where 
+        content_id=#{contentId} 
+    </delete>
+	
+</mapper> 

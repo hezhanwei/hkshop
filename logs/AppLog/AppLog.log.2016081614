@@ -1,0 +1,72 @@
+[2016-08-16 14:34:51 INFO][DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2016-08-16 14:34:51 INFO][DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@14d9c11d, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6415619c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@37bb7c19, org.springframework.test.context.transaction.TransactionalTestExecutionListener@75d069e4, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@45d83429]
+[2016-08-16 14:34:51 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-main-single.xml]
+[2016-08-16 14:34:52 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-dataSource.xml]
+[2016-08-16 14:34:52 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-mybatis.xml]
+[2016-08-16 14:34:52 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-transaction.xml]
+[2016-08-16 14:34:52 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-filter.xml]
+[2016-08-16 14:34:52 INFO][GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@55b8b91f: startup date [Tue Aug 16 14:34:52 CST 2016]; root of context hierarchy
+[2016-08-16 14:34:53 INFO][PropertySourcesPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[2016-08-16 14:35:00 INFO][DruidDataSource]{dataSource-1} inited
+[2016-08-16 14:35:17 INFO][GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@55b8b91f: startup date [Tue Aug 16 14:34:52 CST 2016]; root of context hierarchy
+[2016-08-16 14:35:17 INFO][DruidDataSource]{dataSource-1} closed
+[2016-08-16 14:39:59 INFO][DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2016-08-16 14:39:59 INFO][DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2c6edffb, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2332ee87, org.springframework.test.context.support.DirtiesContextTestExecutionListener@64c9f31e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6786a44, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4b8899ad]
+[2016-08-16 14:39:59 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-main-single.xml]
+[2016-08-16 14:40:00 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-dataSource.xml]
+[2016-08-16 14:40:00 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-mybatis.xml]
+[2016-08-16 14:40:00 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-transaction.xml]
+[2016-08-16 14:40:00 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-filter.xml]
+[2016-08-16 14:40:00 INFO][GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@3f076445: startup date [Tue Aug 16 14:40:00 CST 2016]; root of context hierarchy
+[2016-08-16 14:40:00 INFO][PropertySourcesPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[2016-08-16 14:40:04 INFO][DruidDataSource]{dataSource-1} inited
+[2016-08-16 14:40:05 INFO][GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@3f076445: startup date [Tue Aug 16 14:40:00 CST 2016]; root of context hierarchy
+[2016-08-16 14:40:05 INFO][DruidDataSource]{dataSource-1} closed
+[2016-08-16 14:41:17 INFO][DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2016-08-16 14:41:17 INFO][DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2c6edffb, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2332ee87, org.springframework.test.context.support.DirtiesContextTestExecutionListener@64c9f31e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6786a44, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4b8899ad]
+[2016-08-16 14:41:17 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-main-single.xml]
+[2016-08-16 14:41:17 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-dataSource.xml]
+[2016-08-16 14:41:17 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-mybatis.xml]
+[2016-08-16 14:41:17 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-transaction.xml]
+[2016-08-16 14:41:17 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-filter.xml]
+[2016-08-16 14:41:17 INFO][GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@3f076445: startup date [Tue Aug 16 14:41:17 CST 2016]; root of context hierarchy
+[2016-08-16 14:41:18 INFO][PropertySourcesPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[2016-08-16 14:41:22 INFO][DruidDataSource]{dataSource-1} inited
+[2016-08-16 14:41:22 INFO][GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@3f076445: startup date [Tue Aug 16 14:41:17 CST 2016]; root of context hierarchy
+[2016-08-16 14:41:23 INFO][DruidDataSource]{dataSource-1} closed
+[2016-08-16 14:41:34 INFO][DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2016-08-16 14:41:34 INFO][DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@14cd036c, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@1f9bb21f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@26cb216f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6200124e, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@72b1f125]
+[2016-08-16 14:41:34 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-main-single.xml]
+[2016-08-16 14:41:35 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-dataSource.xml]
+[2016-08-16 14:41:35 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-mybatis.xml]
+[2016-08-16 14:41:35 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-transaction.xml]
+[2016-08-16 14:41:35 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-filter.xml]
+[2016-08-16 14:41:35 INFO][GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@1ea40b04: startup date [Tue Aug 16 14:41:35 CST 2016]; root of context hierarchy
+[2016-08-16 14:41:35 INFO][PropertySourcesPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[2016-08-16 14:41:39 INFO][DruidDataSource]{dataSource-1} inited
+[2016-08-16 14:41:40 INFO][GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@1ea40b04: startup date [Tue Aug 16 14:41:35 CST 2016]; root of context hierarchy
+[2016-08-16 14:41:40 INFO][DruidDataSource]{dataSource-1} closed
+[2016-08-16 14:42:47 INFO][DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2016-08-16 14:42:47 INFO][DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@14cd036c, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@1f9bb21f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@26cb216f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6200124e, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@72b1f125]
+[2016-08-16 14:42:47 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-main-single.xml]
+[2016-08-16 14:42:48 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-dataSource.xml]
+[2016-08-16 14:42:48 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-mybatis.xml]
+[2016-08-16 14:42:48 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-transaction.xml]
+[2016-08-16 14:42:48 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-filter.xml]
+[2016-08-16 14:42:48 INFO][GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@1ea40b04: startup date [Tue Aug 16 14:42:48 CST 2016]; root of context hierarchy
+[2016-08-16 14:42:48 INFO][PropertySourcesPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[2016-08-16 14:42:52 INFO][DruidDataSource]{dataSource-1} inited
+[2016-08-16 14:42:53 INFO][GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@1ea40b04: startup date [Tue Aug 16 14:42:48 CST 2016]; root of context hierarchy
+[2016-08-16 14:42:53 INFO][DruidDataSource]{dataSource-1} closed
+[2016-08-16 14:44:24 INFO][DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[2016-08-16 14:44:24 INFO][DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@14cd036c, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@1f9bb21f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@26cb216f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6200124e, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@72b1f125]
+[2016-08-16 14:44:25 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-main-single.xml]
+[2016-08-16 14:44:25 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-dataSource.xml]
+[2016-08-16 14:44:25 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-mybatis.xml]
+[2016-08-16 14:44:25 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [db/spring-transaction.xml]
+[2016-08-16 14:44:25 INFO][XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring/spring-filter.xml]
+[2016-08-16 14:44:25 INFO][GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@1ea40b04: startup date [Tue Aug 16 14:44:25 CST 2016]; root of context hierarchy
+[2016-08-16 14:44:25 INFO][PropertySourcesPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[2016-08-16 14:44:30 INFO][DruidDataSource]{dataSource-1} inited
+[2016-08-16 14:44:30 INFO][GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@1ea40b04: startup date [Tue Aug 16 14:44:25 CST 2016]; root of context hierarchy
+[2016-08-16 14:44:30 INFO][DruidDataSource]{dataSource-1} closed

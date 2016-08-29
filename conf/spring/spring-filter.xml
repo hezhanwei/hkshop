@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	<bean id="AccessFilter" name="AccessFilter" class="com.bluemobi.filter.AccessFilter">
+	   <property name="staticResourceSuffixList">
+	       <list>
+			   <value>css</value>
+			   <value>js</value>
+			   <value>gif</value>
+			   <value>jpg</value>
+			   <value>png</value>
+			   <value>woff</value>
+			   <value>ttf</value>
+			   <value>eot</value>
+			   <value>svg</value>
+			   <value>otf</value>
+	       </list>
+	   </property>
+	   <property name="visitUrlList">
+	       <list>
+               <value>/admin/sign/in</value>
+               <value>/admin/code</value>
+               <value>/admin/sign/login</value>
+           </list>
+	   </property>
+	   <property name="userOpenUrlList">
+	       <list>
+	           <value>/admin</value>
+	           <value>/admin/sign/out</value>
+	           <value>/panel/navigation/getNavigationById</value>
+               <value>/trend/region/getRegionByPid</value>
+               <value>/trend/region/getChilds</value>
+	       </list>
+	   </property>
+	   <property name="apiUrlPreffix" value="/api"/>
+	</bean>
+</beans>
